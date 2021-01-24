@@ -11,7 +11,7 @@ library(dplyr)
 
 casen_2017 <- read_sav("datos/Casen 2017.sav")
 
-casen_2017 <- readRDS("datos/3-casen.RDS") # Alternativa ante no lectura SPSS
+casen_2017 <- readRDS("datos/3-casen_pobreza.rds") # Alternativa ante no lectura SPSS
 
 
 # ---- 2. CÁLCULO INDICADOR POBREZA MULTIDIMENSIONAL: NIVEL MUESTRAL ----
@@ -61,10 +61,10 @@ pobrezamulti2 <- casen_pond2 %>%
 
 # ----- 4. CONSTRUIR BASE PARA UTILIZAR OFF LINE
 
-casen_seleccion <- select(casen_2017, expr, expc, varstrat, region, comuna)
+casen_seleccion <- select(casen_2017, expr, expc, varstrat, pobreza_multi_5d, region, comuna)
 
 # Guardar CASEN completa en formato RDS
-saveRDS(casen_2017, file = "datos/casen_2017.RDS")
+saveRDS(casen_2017, file = "datos/casen_2017.rds")
 
 # Guardar CASEN sólo con variables de interés para análisis en formato RDS
-saveRDS(casen_seleccion, file = "datos/casen_pobreza.RDS")
+saveRDS(casen_seleccion, file = "datos/3-casen_pobreza.rds")
